@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kintama — Developer, Robotics Builder & Student</title>
+  <meta name="description" content="Personal portfolio of Kintama. Hobby programmer, student, robotics builder, Linux enthusiast, and community moderator.">
+  <meta name="theme-color" content="#000000">
+
+  <!-- Favicon Configuration -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+
+  <!-- Performance & Typography: Non-blocking asynchronous font loading -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600;700&family=Geist:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600;700&family=Geist:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600;700&family=Geist:wght@400;500;600;700;800&display=swap">
+  </noscript>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="dark-theme">
+  <!-- Custom Sci-Fi System Preloader -->
+  <div id="site-preloader" class="site-preloader" role="status" aria-label="Loading site">
+    <div class="preloader-backdrop"></div>
+    <div class="preloader-container">
+      <!-- 3D Mini Wireframe Rotating Cube Glyph -->
+      <div class="preloader-cube-viewport" aria-hidden="true">
+        <div class="preloader-cube">
+          <div class="pface pface-front"></div>
+          <div class="pface pface-back"></div>
+          <div class="pface pface-right"></div>
+          <div class="pface pface-left"></div>
+          <div class="pface pface-top"></div>
+          <div class="pface pface-bottom"></div>
+        </div>
+      </div>
+
+      <!-- Header & Brand -->
+      <div class="preloader-header">
+        <span class="preloader-brand">Kintama</span>
+        <span class="preloader-sub">SYSTEM INITIALIZATION // V2.4</span>
+      </div>
+
+      <!-- Meter Track & Telemetry Checkpoints -->
+      <div class="preloader-meter">
+        <div class="preloader-track">
+          <div class="preloader-fill" id="preloader-fill"></div>
+        </div>
+        <div class="preloader-info">
+          <span class="preloader-task" id="preloader-task">INITIALIZING TELEMETRY...</span>
+          <span class="preloader-pct" id="preloader-pct">0%</span>
+        </div>
+      </div>
+
+      <!-- Footer Coordinate Specs -->
+      <div class="preloader-footer">
+        <span>LOC // 23.8103° N, 90.4125° E</span>
+        <span class="preloader-sep">•</span>
+        <span>ARCH-X86_64</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dynamic Particle Canvas -->
+  <canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+  <!-- Accessibility Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Top Navigation Header -->
+  <header class="top-nav" id="top-nav">
+    <div class="nav-container">
+      <!-- Brand Logo with 9-dot cube matrix icon -->
+      <a href="#hero" class="brand" aria-label="Kintama Home">
+        <svg class="brand-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+          <circle cx="5" cy="5" r="2.2" />
+          <circle cx="12" cy="5" r="2.2" />
+          <circle cx="19" cy="5" r="2.2" />
+          <circle cx="5" cy="12" r="2.2" />
+          <circle cx="12" cy="12" r="2.2" />
+          <circle cx="19" cy="12" r="2.2" />
+          <circle cx="5" cy="19" r="2.2" />
+          <circle cx="12" cy="19" r="2.2" />
+          <circle cx="19" cy="19" r="2.2" />
+        </svg>
+        <span class="brand-name">kintama</span>
+      </a>
+
+      <!-- Status Indicator Pill -->
+      <div class="status-pill" title="Open for creative collaborations, open-source projects & technical inquiries">
+        <span class="status-dot"></span>
+        <span class="status-text">Open for Projects</span>
+      </div>
+
+      <!-- Header Action Links -->
+      <div class="nav-actions">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#projects" class="nav-link">Works</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <a href="https://github.com/legendlife" target="_blank" rel="noopener noreferrer" class="nav-btn-icon" aria-label="GitHub Profile">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+            <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Toggle Button -->
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Navigation Menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+
+  <!-- Vertical Section Navigator (Faithful to Ninebrains UI) -->
+  <nav class="vertical-nav" id="vertical-nav" aria-label="Section navigation">
+    <div class="nav-track">
+      <div class="nav-track-line"></div>
+
+      <!-- 00: Home -->
+      <a href="#hero" class="vnav-item active" data-section="hero">
+        <div class="vnav-badge">00</div>
+        <div class="vnav-icon">
+          <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+            <rect x="1" y="1" width="3" height="3" rx="0.5"/>
+            <rect x="6.5" y="1" width="3" height="3" rx="0.5"/>
+            <rect x="12" y="1" width="3" height="3" rx="0.5"/>
+            <rect x="1" y="6.5" width="3" height="3" rx="0.5"/>
+            <rect x="6.5" y="6.5" width="3" height="3" rx="0.5"/>
+            <rect x="12" y="6.5" width="3" height="3" rx="0.5"/>
+            <rect x="1" y="12" width="3" height="3" rx="0.5"/>
+            <rect x="6.5" y="12" width="3" height="3" rx="0.5"/>
+            <rect x="12" y="12" width="3" height="3" rx="0.5"/>
+          </svg>
+        </div>
+        <div class="vnav-content">
+          <span class="vnav-title">Home</span>
+          <div class="vnav-sub-wrap">
+            <span class="vnav-sub">Curiosity, code & hardware</span>
+            <span class="vnav-line"></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 01: About -->
+      <a href="#about" class="vnav-item" data-section="about">
+        <div class="vnav-badge">01</div>
+        <div class="vnav-icon">
+          <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+            <rect x="1.5" y="1.5" width="5.5" height="5.5" rx="1"/>
+            <rect x="9" y="1.5" width="5.5" height="5.5" rx="1"/>
+            <rect x="1.5" y="9" width="5.5" height="5.5" rx="1"/>
+            <rect x="9" y="9" width="5.5" height="5.5" rx="1"/>
+          </svg>
+        </div>
+        <div class="vnav-content">
+          <span class="vnav-title">About</span>
+          <div class="vnav-sub-wrap">
+            <span class="vnav-sub">The profile & journey</span>
+            <span class="vnav-line"></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 02: Skills -->
+      <a href="#skills" class="vnav-item" data-section="skills">
+        <div class="vnav-badge">02</div>
+        <div class="vnav-icon">
+          <svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6">
+            <rect x="6" y="2" width="4" height="4" rx="0.8"/>
+            <circle cx="3" cy="13" r="1.8"/>
+            <circle cx="8" cy="13" r="1.8"/>
+            <circle cx="13" cy="13" r="1.8"/>
+            <path d="M8 6v3m0 0L3 11m5-2v2m0-2l5 2"/>
+          </svg>
+        </div>
+        <div class="vnav-content">
+          <span class="vnav-title">Skills</span>
+          <div class="vnav-sub-wrap">
+            <span class="vnav-sub">Languages, tools & stack</span>
+            <span class="vnav-line"></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 03: Works -->
+      <a href="#projects" class="vnav-item" data-section="projects">
+        <div class="vnav-badge">03</div>
+        <div class="vnav-icon">
+          <svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6">
+            <rect x="2" y="2" width="12" height="12" rx="2"/>
+            <path d="M5 8.5l2 2 4-4"/>
+          </svg>
+        </div>
+        <div class="vnav-content">
+          <span class="vnav-title">Works</span>
+          <div class="vnav-sub-wrap">
+            <span class="vnav-sub">Selected builds & projects</span>
+            <span class="vnav-line"></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 04: Contact -->
+      <a href="#contact" class="vnav-item" data-section="contact">
+        <div class="vnav-badge">04</div>
+        <div class="vnav-icon">
+          <svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6">
+            <path d="M8 1.5L2.5 4.5v7l5.5 3 5.5-3v-7L8 1.5z"/>
+            <path d="M2.5 4.5l5.5 3.5 5.5-3.5M8 8v7"/>
+          </svg>
+        </div>
+        <div class="vnav-content">
+          <span class="vnav-title">Contact</span>
+          <div class="vnav-sub-wrap">
+            <span class="vnav-sub">Get in touch & channels</span>
+            <span class="vnav-line"></span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Main Scrollable Content Area -->
+  <main id="main-content" class="content-wrapper">
+
+    <!-- ========================================================= -->
+    <!-- SECTION 00: HERO / OVERVIEW                               -->
+    <!-- ========================================================= -->
+    <section id="hero" class="hero-section" data-nav="00">
+      <div class="hero-container">
+        
+        <!-- Left Hero Content Column -->
+        <div class="hero-content">
+          <div class="hero-eyebrow">
+            <span class="eyebrow-tag">Developer • Robotics Builder • Linux Enthusiast</span>
+          </div>
+
+          <h1 class="hero-title">
+            Kintama.
+          </h1>
+
+          <!-- Terminal Command Bar with Copy Action -->
+          <div class="terminal-bar" id="terminal-bar">
+            <div class="terminal-bar-tabs">
+              <span class="tab-item active">Terminal</span>
+            </div>
+            <div class="terminal-cmd-box">
+              <div class="cmd-text" id="cmd-container">
+                <span class="cmd-prompt">&gt;</span>
+                <span class="cmd-input-container">
+                  <input type="text" id="cmd-input" class="cmd-real-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" aria-label="Terminal command input" />
+                  <code id="cmd-string"></code>
+                  <span class="terminal-cursor blink" id="terminal-cursor" aria-hidden="true"></span>
+                </span>
+              </div>
+              <button class="cmd-copy-btn" id="copy-btn" aria-label="Copy command to clipboard">
+                <span class="copy-text">Copy</span>
+                <span class="cmd-copy-icon">
+                  <svg class="icon-clipboard" viewBox="0 0 16 16" width="12" height="12" fill="currentColor">
+                    <path d="M4 2h8a1 1 0 011 1v1h1a1 1 0 011 1v9a1 1 0 01-1 1H5a1 1 0 01-1-1v-1H3a1 1 0 01-1-1V3a1 1 0 011-1zm1 11h8V5H5v8zm-2-2h1V4h7V3H3v8z"/>
+                  </svg>
+                  <svg class="icon-check" viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3.5 8.5l3 3 6-6"/>
+                  </svg>
+                </span>
+              </button>
+            </div>
+            <span class="cmd-hint" id="cmd-hint"></span>
+          </div>
+
+          <!-- Hero Action Buttons -->
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary">
+              <span>View Projects</span>
+              <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M3 8h10M9 4l4 4-4 4"/>
+              </svg>
+            </a>
+            <a href="#contact" class="btn btn-secondary">
+              <span>Initiate Contact</span>
+            </a>
+          </div>
+
+
+          <!-- Quick Stats Row -->
+          <div class="stats-row">
+            <div class="stat-item">
+              <span class="stat-number">4+</span>
+              <span class="stat-label">years community lead</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-number">2+</span>
+              <span class="stat-label">years RCRIC vice president</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-number">Linux</span>
+              <span class="stat-label">daily driver &amp; dotfiles</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-number">100%</span>
+              <span class="stat-label">open source dedication</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Hero Visual Column: 3D Cubes + Live Terminal Pane -->
+        <div class="hero-visual" id="hero-visual-wrapper">
+          
+          <!-- 3D Geometric Floating Cubes Scene -->
+          <div class="cubes-viewport" id="cubes-viewport" aria-label="3D geometric cubes scene">
+            <div class="cubes-scene" id="cubes-scene">
+              
+              <!-- Ground Perspective Wireframe Grid Plane -->
+              <div class="grid-plane" aria-hidden="true">
+                <div class="grid-lines"></div>
+                <div class="grid-crosshairs"></div>
+              </div>
+
+              <!-- 3x3 Floating Cubes Cluster (9 cubes total) -->
+              <!-- Row 1: Top -->
+              <div class="cube cube-top-left" data-index="1">
+                <div class="face face-front"></div>
+                <div class="face face-back"></div>
+                <div class="face face-right"></div>
+                <div class="face face-left"></div>
+                <div class="face face-top"></div>
+                <div class="face face-bottom"></div>
+              </div>
+              <div class="cube cube-top-center" data-index="2">
+                <div class="face face-front"></div>
+                <div class="face face-back"></div>
+                <div class="face face-right"></div>
+                <div class="face face-left"></div>
+                <div class="face face-top"></div>
+                <div class="face face-bottom"></div>
+              </div>
+              <div class="cube cube-top-right" data-index="3">
+                <div class="face face-front"></div>
+                <div class="face face-back"></div>
+                <div class="face face-right"></div>
+                <div class="face face-left"></div>
+                <div class="face face-top"></div>
+                <div class="face face-bottom"></div>
+              </div>
+
+              <!-- Row 2: Middle (Center cube is larger and highlighted) -->
+              <div class="cube cube-mid-left" data-index="4">
+                <div class="face face-front"></div>
+                <div class="face face-back"></div>
+                <div class="face face-right"></div>
+                <div class="face face-left"></div>
+                <div class="face face-top"></div>
+                <div class="face face-bottom"></div>
+              </div>
+              <div class="cube cube-center cube-featured" data-index="5">
+                <div class="face face-front"></div>
+                <div class="face face-back"></div>
+                <div class="face face-right"></div>
+                <div class="face face-left"></div>
+                <div class="face face-top"></div>
+                <div class="face face-bottom"></div>
+              </div>
+              <div class="cube cube-mid-right" data-index="6">
+                <div class="face face-front"></div>
+                <div class="face face-back"></div>
+                <div class="face face-right"></div>
+                <div class="face face-left"></div>
+                <div class="face face-top"></div>
+                <div class="face face-bottom"></div>
+              </div>
+
+              <!-- Row 3: Bottom -->
+              <div class="cube cube-bot-left" data-index="7">
+                <div class="face face-front"></div>
+                <div class="face face-back"></div>
+                <div class="face face-right"></div>
+                <div class="face face-left"></div>
+                <div class="face face-top"></div>
+                <div class="face face-bottom"></div>
+              </div>
+              <div class="cube cube-bot-center" data-index="8">
+                <div class="face face-front"></div>
+                <div class="face face-back"></div>
+                <div class="face face-right"></div>
+                <div class="face face-left"></div>
+                <div class="face face-top"></div>
+                <div class="face face-bottom"></div>
+              </div>
+              <div class="cube cube-bot-right" data-index="9">
+                <div class="face face-front"></div>
+                <div class="face face-back"></div>
+                <div class="face face-right"></div>
+                <div class="face face-left"></div>
+                <div class="face face-top"></div>
+                <div class="face face-bottom"></div>
+              </div>
+
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- SECTION 01: ABOUT                                         -->
+    <!-- ========================================================= -->
+    <section id="about" class="section about-section" data-nav="01">
+      <div class="section-container">
+        
+        <div class="section-header">
+          <div class="section-index">
+            <span class="index-badge">01</span>
+            <span class="index-sep">//</span>
+            <span class="index-title">ABOUT</span>
+          </div>
+          <h2 class="section-heading">Curiosity, craftsmanship, and physical builds.</h2>
+          <p class="section-subtext">Bridging software logic with hands-on hardware engineering, tailored Linux environments, and community-driven technology.</p>
+        </div>
+
+        <div class="about-grid">
+          <!-- Left Bio Narrative -->
+          <div class="about-bio-card">
+            <div class="card-corner tl"></div>
+            <div class="card-corner tr"></div>
+            <div class="card-corner bl"></div>
+            <div class="card-corner br"></div>
+
+            <h3 class="bio-title">Hello, I am Kintama.</h3>
+            
+            <p class="bio-text">
+              I am an enthusiastic <strong>Hobby Programmer</strong>, <strong>Student</strong>, and lifelong <strong>Linux Enthusiast</strong>. I focus on designing minimalist Unix workstations, curating bespoke dotfiles, and writing software that balances aesthetic refinement with dependable execution.
+            </p>
+            
+            <p class="bio-text">
+              My interest in engineering bridges software and the physical realm, where I design and build autonomous <strong>Robots</strong> and precision mechanical assemblies. Beyond the <strong>Terminal</strong> and the <strong>Workbench</strong>, I am a dedicated <strong>Audiophile</strong> and <strong>Bassist</strong>—exploring rich sonic acoustics, testing high-fidelity audio gear, and shaping deep, resonant basslines.
+            </p>
+
+            <p class="bio-text">
+              I hold a deep appreciation for the <strong>Visual Arts</strong>, capturing atmospheric landscapes through <strong>Environmental Photography</strong> and crafting expressive compositions with <strong>2D pixel art</strong>.
+            </p>
+
+            <div class="bio-quote">
+              <span class="quote-mark">“</span>
+              <p>The tomorrow you wanted will never come and today was the last thing you did. And that today was your past.</p>
+            </div>
+          </div>
+
+          <!-- Right Engineering Pillars -->
+          <div class="about-pillars">
+            
+            <!-- Pillar 1 -->
+            <div class="pillar-card">
+              <div class="pillar-number">01</div>
+              <div class="pillar-info">
+                <h4 class="pillar-name">Community Leadership — r/Bangladesh</h4>
+                <p class="pillar-desc">
+                  Dedicated Moderator for the r/Bangladesh Discord community (discord.gg/bangladesh) for over 4 years, overseeing digital safety, community initiatives, and member engagement.
+                </p>
+              </div>
+            </div>
+
+            <!-- Pillar 2 -->
+            <div class="pillar-card">
+              <div class="pillar-number">02</div>
+              <div class="pillar-info">
+                <h4 class="pillar-name">Vice President — RCRIC</h4>
+                <p class="pillar-desc">
+                  Vice President and active member for 2+ years, organizing technical workshops, driving robotics projects, and mentoring peers in practical engineering.
+                </p>
+
+              </div>
+            </div>
+
+            <!-- Pillar 3 -->
+            <div class="pillar-card">
+              <div class="pillar-number">03</div>
+              <div class="pillar-info">
+                <h4 class="pillar-name">Open Source Advocate &amp; Developer</h4>
+                <p class="pillar-desc">
+                  Dedicated to free and open-source software (FOSS) from the start—authoring personal utilities, sharing Unix dotfiles, and contributing to community-driven technology.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- SECTION 02: SKILLS & STACK                                -->
+    <!-- ========================================================= -->
+    <section id="skills" class="section skills-section" data-nav="02">
+      <div class="section-container">
+        
+        <div class="section-header">
+          <div class="section-index">
+            <span class="index-badge">02</span>
+            <span class="index-sep">//</span>
+            <span class="index-title">SKILLS</span>
+          </div>
+          <h2 class="section-heading">Core Stack & Technologies</h2>
+          <p class="section-subtext">A versatile toolkit applied across software engineering, custom Linux environments, and robotics systems.</p>
+        </div>
+
+        <div class="skills-grid">
+          
+          <!-- Category 1: Languages -->
+          <div class="skill-category-card">
+            <div class="category-header">
+              <div class="cat-icon">
+                <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6">
+                  <rect x="3" y="3" width="14" height="14" rx="2"/>
+                  <path d="M7 8h6M7 12h6"/>
+                </svg>
+              </div>
+              <div class="cat-title-block">
+                <h3 class="cat-title">Languages</h3>
+                <span class="cat-subtitle">Core syntax & logic</span>
+              </div>
+            </div>
+            
+            <ul class="skill-list">
+              <li class="skill-item">
+                <span class="skill-name">JavaScript / TypeScript</span>
+                <p class="skill-note">Modern ESNext, type safety, and clean full-stack logic.</p>
+              </li>
+
+              <li class="skill-item">
+                <span class="skill-name">Python</span>
+                <p class="skill-note">Backend scripting, data handling, and automation.</p>
+              </li>
+
+              <li class="skill-item">
+                <span class="skill-name">C / C++</span>
+                <p class="skill-note">Microcontroller firmware, robotics kinematics, and low-level logic.</p>
+              </li>
+
+              <li class="skill-item">
+                <span class="skill-name">HTML5 & CSS3</span>
+                <p class="skill-note">Semantic structure, modern layouts, and fluid responsive styling.</p>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Category 2: Frontend & UI -->
+          <div class="skill-category-card">
+            <div class="category-header">
+              <div class="cat-icon">
+                <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6">
+                  <path d="M10 2l8 4.5v7L10 18l-8-4.5v-7L10 2z"/>
+                  <path d="M10 2v16M2 6.5l8 4.5 8-4.5"/>
+                </svg>
+              </div>
+              <div class="cat-title-block">
+                <h3 class="cat-title">Frontend & UI</h3>
+                <span class="cat-subtitle">Visuals & user experience</span>
+              </div>
+            </div>
+
+            <ul class="skill-list">
+              <li class="skill-item">
+                <span class="skill-name">React & Next.js</span>
+                <p class="skill-note">Modular component architecture and performant web applications.</p>
+              </li>
+
+              <li class="skill-item">
+                <span class="skill-name">Tailwind CSS</span>
+                <p class="skill-note">Clean design systems, rapid utility styling, and polished aesthetics.</p>
+              </li>
+
+              <li class="skill-item">
+                <span class="skill-name">Canvas & WebGL</span>
+                <p class="skill-note">Interactive 2D/3D graphics, particle systems, and creative visuals.</p>
+              </li>
+
+              <li class="skill-item">
+                <span class="skill-name">Responsive Design</span>
+                <p class="skill-note">Seamless layouts and micro-interactions optimized for all screens.</p>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Category 3: Backend & APIs -->
+          <div class="skill-category-card">
+            <div class="category-header">
+              <div class="cat-icon">
+                <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6">
+                  <rect x="3" y="4" width="14" height="12" rx="2"/>
+                  <path d="M7 8h6M7 12h3"/>
+                </svg>
+              </div>
+              <div class="cat-title-block">
+                <h3 class="cat-title">Backend & APIs</h3>
+                <span class="cat-subtitle">Server logic & data flow</span>
+              </div>
+            </div>
+
+            <ul class="skill-list">
+              <li class="skill-item">
+                <span class="skill-name">Node.js & Express</span>
+                <p class="skill-note">RESTful endpoints, middleware architecture, and backend services.</p>
+              </li>
+
+              <li class="skill-item">
+                <span class="skill-name">REST APIs</span>
+                <p class="skill-note">Clean JSON interfaces, input validation, and structured error responses.</p>
+              </li>
+
+              <li class="skill-item">
+                <span class="skill-name">Discord API & Bots</span>
+                <p class="skill-note">Community automation, moderation tooling, and event handling.</p>
+              </li>
+
+              <li class="skill-item">
+                <span class="skill-name">WebSockets</span>
+                <p class="skill-note">Real-time event broadcasting and low-latency client-server messaging.</p>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Category 4: Tools & Systems -->
+          <div class="skill-category-card">
+            <div class="category-header">
+              <div class="cat-icon">
+                <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6">
+                  <rect x="3" y="9" width="14" height="9" rx="2"/>
+                  <path d="M6 9V5a4 4 0 018 0v4"/>
+                </svg>
+              </div>
+              <div class="cat-title-block">
+                <h3 class="cat-title">Systems & Tools</h3>
+                <span class="cat-subtitle">Environment & hardware</span>
+              </div>
+            </div>
+
+            <ul class="skill-list">
+              <li class="skill-item">
+                <span class="skill-name">Linux & Dotfiles</span>
+                <p class="skill-note">Tailored Unix workstations, tiling window managers, and Zsh automation.</p>
+              </li>
+
+              <li class="skill-item">
+                <span class="skill-name">Hardware & Robotics</span>
+                <p class="skill-note">Microcontrollers (ESP32/Arduino), sensor integration, and workbench builds.</p>
+              </li>
+
+              <li class="skill-item">
+                <span class="skill-name">Git & GitHub</span>
+                <p class="skill-note">Branching workflows, version control, and open-source collaboration.</p>
+              </li>
+
+              <li class="skill-item">
+                <span class="skill-name">Audio & Acoustics</span>
+                <p class="skill-note">Acoustic calibration, high-fidelity audio chains, and bass tone staging.</p>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- SECTION 03: SELECTED WORKS / PROJECTS                     -->
+    <!-- ========================================================= -->
+    <section id="projects" class="section projects-section" data-nav="03">
+      <div class="section-container">
+        
+        <div class="section-header">
+          <div class="section-index">
+            <span class="index-badge">03</span>
+            <span class="index-sep">//</span>
+            <span class="index-title">WORKS</span>
+          </div>
+          <h2 class="section-heading">Selected Builds &amp; Experimental Projects</h2>
+          <p class="section-subtext">A showcase of embedded hardware, robotics engineering, custom Unix environments, and open-source tooling.</p>
+        </div>
+
+        <div class="projects-grid">
+          
+          <!-- Project 1: ESP32-Adblock -->
+          <article class="project-card">
+            <div class="project-card-header">
+              <div class="proj-id">
+                <span class="proj-mono">BUILD-01</span>
+                <span class="proj-status">ACTIVE</span>
+              </div>
+              <div class="proj-type">IoT Security / Embedded</div>
+            </div>
+
+            <div class="project-body">
+              <h3 class="proj-title">ESP32-Adblock</h3>
+              <p class="proj-desc">
+                Hardware DNS sinkhole and network telemetry blocker running on ESP32 Devkit V1. Intercepts port 53 UDP traffic, parses RFC 1035 DNS queries, evaluates domains against an embedded blocklist, and transparently proxies clean requests upstream.
+              </p>
+              
+              <div class="proj-specs">
+                <div class="spec-row">
+                  <span class="spec-key">Hardware</span>
+                  <span class="spec-val">ESP32 Devkit V1</span>
+                </div>
+                <div class="spec-row">
+                  <span class="spec-key">Protocol</span>
+                  <span class="spec-val">RFC 1035 UDP DNS (Port 53)</span>
+                </div>
+                <div class="spec-row">
+                  <span class="spec-key">Upstream</span>
+                  <span class="spec-val">Cloudflare 1.1.1.1</span>
+                </div>
+              </div>
+
+              <div class="proj-tags">
+                <span class="tag">C++</span>
+                <span class="tag">ESP32</span>
+                <span class="tag">DNS Sinkhole</span>
+                <span class="tag">IoT Security</span>
+              </div>
+            </div>
+
+            <div class="project-footer">
+              <a href="https://github.com/legendlife/esp32-adblock" target="_blank" rel="noopener noreferrer" class="proj-link">
+                <span>View Source</span>
+                <svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M3 13L13 3M5 3h8v8"/>
+                </svg>
+              </a>
+              <span class="proj-version">v1.0.0</span>
+            </div>
+          </article>
+
+          <!-- Project 2: Solaris Shenanigans -->
+          <article class="project-card">
+            <div class="project-card-header">
+              <div class="proj-id">
+                <span class="proj-mono">BUILD-02</span>
+                <span class="proj-status">ACTIVE</span>
+              </div>
+              <div class="proj-type">Robotics / Embedded</div>
+            </div>
+
+            <div class="project-body">
+              <h3 class="proj-title">Solaris Shenanigans</h3>
+              <p class="proj-desc">
+                Autonomous robotics engineering and kinematics firmware developed for the Rajuk College Robotics &amp; ICT Club (RCRIC). Features sensor integration, motor kinematics, differential drive loops, and real-time microcontroller control.
+              </p>
+
+              <div class="proj-specs">
+                <div class="spec-row">
+                  <span class="spec-key">Organization</span>
+                  <span class="spec-val">RCRIC Robotics</span>
+                </div>
+                <div class="spec-row">
+                  <span class="spec-key">Domain</span>
+                  <span class="spec-val">Autonomous Kinematics</span>
+                </div>
+                <div class="spec-row">
+                  <span class="spec-key">Platform</span>
+                  <span class="spec-val">Embedded C++</span>
+                </div>
+              </div>
+
+              <div class="proj-tags">
+                <span class="tag">Robotics</span>
+                <span class="tag">C++</span>
+                <span class="tag">RCRIC</span>
+                <span class="tag">Kinematics</span>
+              </div>
+            </div>
+
+            <div class="project-footer">
+              <a href="https://github.com/rc-ric/solaris-shenanigans" target="_blank" rel="noopener noreferrer" class="proj-link">
+                <span>View Project</span>
+                <svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M3 13L13 3M5 3h8v8"/>
+                </svg>
+              </a>
+              <span class="proj-version">Club Build</span>
+            </div>
+          </article>
+
+          <!-- Project 3: Redish -->
+          <article class="project-card">
+            <div class="project-card-header">
+              <div class="proj-id">
+                <span class="proj-mono">BUILD-03</span>
+                <span class="proj-status">ACTIVE</span>
+              </div>
+              <div class="proj-type">Unix Rice / Dotfiles</div>
+            </div>
+
+            <div class="project-body">
+              <h3 class="proj-title">Redish</h3>
+              <p class="proj-desc">
+                A crimson and dark monochrome desktop environment for Linux (XFCE on Arch). Integrates a bespoke Picom compositor with dual-kawase blur, Graffias Conky system hardware monitor, dynamic Pywal color generation, and Ulauncher themes.
+              </p>
+
+              <div class="proj-specs">
+                <div class="spec-row">
+                  <span class="spec-key">Base Environment</span>
+                  <span class="spec-val">Arch Linux / XFCE</span>
+                </div>
+                <div class="spec-row">
+                  <span class="spec-key">Compositor</span>
+                  <span class="spec-val">Picom (Kawase Blur)</span>
+                </div>
+                <div class="spec-row">
+                  <span class="spec-key">Widgets</span>
+                  <span class="spec-val">Graffias Conky &amp; Pywal</span>
+                </div>
+              </div>
+
+              <div class="proj-tags">
+                <span class="tag">Linux</span>
+                <span class="tag">Picom</span>
+                <span class="tag">Conky</span>
+                <span class="tag">Unixporn</span>
+                <span class="tag">Dotfiles</span>
+              </div>
+            </div>
+
+            <div class="project-footer">
+              <a href="https://github.com/legendlife/Redish" target="_blank" rel="noopener noreferrer" class="proj-link">
+                <span>View Source</span>
+                <svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M3 13L13 3M5 3h8v8"/>
+                </svg>
+              </a>
+              <span class="proj-version">40+ Stars</span>
+            </div>
+          </article>
+
+          <!-- Project 4: Neofetch Themes -->
+          <article class="project-card">
+            <div class="project-card-header">
+              <div class="proj-id">
+                <span class="proj-mono">BUILD-04</span>
+                <span class="proj-status">ACTIVE</span>
+              </div>
+              <div class="proj-type">CLI / Open Source</div>
+            </div>
+
+            <div class="project-body">
+              <h3 class="proj-title">Neofetch Themes</h3>
+              <p class="proj-desc">
+                An open-source repository of minimal and aesthetic CLI system information themes for Neofetch. Features standard and compact layouts with Nerd Fonts symbol glyphs, custom color blocks, and clean terminal ASCII branding.
+              </p>
+
+              <div class="proj-specs">
+                <div class="spec-row">
+                  <span class="spec-key">Layout Formats</span>
+                  <span class="spec-val">Normal &amp; Small Layouts</span>
+                </div>
+                <div class="spec-row">
+                  <span class="spec-key">Typography</span>
+                  <span class="spec-val">Nerd Fonts &amp; ASCII</span>
+                </div>
+                <div class="spec-row">
+                  <span class="spec-key">Ecosystem</span>
+                  <span class="spec-val">CLI Terminal Customization</span>
+                </div>
+              </div>
+
+              <div class="proj-tags">
+                <span class="tag">Bash/Zsh</span>
+                <span class="tag">Neofetch</span>
+                <span class="tag">CLI</span>
+                <span class="tag">Linux</span>
+                <span class="tag">FOSS</span>
+              </div>
+            </div>
+
+            <div class="project-footer">
+              <a href="https://github.com/legendlife/neofetch-themes/tree/main" target="_blank" rel="noopener noreferrer" class="proj-link">
+                <span>View Source</span>
+                <svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M3 13L13 3M5 3h8v8"/>
+                </svg>
+              </a>
+              <span class="proj-version">FOSS</span>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- SECTION 04: CONTACT                                       -->
+    <!-- ========================================================= -->
+    <section id="contact" class="section contact-section" data-nav="04">
+      <div class="section-container">
+        
+        <div class="section-header">
+          <div class="section-index">
+            <span class="index-badge">04</span>
+            <span class="index-sep">//</span>
+            <span class="index-title">CONTACT</span>
+          </div>
+          <h2 class="section-heading">Initiate Connection</h2>
+          <p class="section-subtext">Open for creative collaborations, open-source software projects, robotics engineering, or music and audio gear discussions.</p>
+        </div>
+
+        <div class="contact-split-layout">
+          
+          <!-- Left Info & Social Links Column -->
+          <div class="contact-info-col">
+            <div class="contact-card">
+              <div class="contact-status-header">
+                <span class="contact-dot"></span>
+                <span class="contact-status-title">Channels Open</span>
+              </div>
+
+              <h3 class="contact-lead-text">
+                Let's build something creative, functional, and open.
+              </h3>
+
+              <p class="contact-body-text">
+                I am always excited to connect regarding software development, robotics and hardware builds, custom Linux setups, community moderation, or high-fidelity audio gear.
+              </p>
+
+              <!-- Direct Email Shortcut with Copy Feature -->
+              <div class="direct-email-box">
+                <span class="email-label">DIRECT DISPATCH:</span>
+                <div class="email-row">
+                  <code class="email-address" id="email-address">kintamarbd@gmail.com</code>
+                  <button class="email-copy-btn" id="email-copy-btn" title="Copy email address" aria-label="Copy email">
+                    <span class="email-copy-text">Copy</span>
+                    <span class="email-copy-icon">
+                      <svg class="icon-clipboard" viewBox="0 0 16 16" width="12" height="12" fill="currentColor">
+                        <path d="M4 2h8a1 1 0 011 1v1h1a1 1 0 011 1v9a1 1 0 01-1 1H5a1 1 0 01-1-1v-1H3a1 1 0 01-1-1V3a1 1 0 011-1zm1 11h8V5H5v8zm-2-2h1V4h7V3H3v8z"/>
+                      </svg>
+                      <svg class="icon-check" viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3.5 8.5l3 3 6-6"/>
+                      </svg>
+                    </span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Social Links Matrix (Clean monochrome placeholders) -->
+              <div class="social-channels">
+                <span class="social-label">NETWORK CHANNELS:</span>
+                
+                <div class="social-grid">
+                  <!-- GitHub -->
+                  <a href="https://github.com/legendlife" target="_blank" rel="noopener noreferrer" class="social-pill" aria-label="GitHub Profile">
+                    <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
+                      <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                    </svg>
+                    <span>GitHub</span>
+                    <span class="social-arrow">↗</span>
+                  </a>
+
+                  <!-- Discord -->
+                  <a href="https://discord.com/users/774938059342479372" target="_blank" rel="noopener noreferrer" class="social-pill" aria-label="Discord Server">
+                    <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
+                      <path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.893.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+                    </svg>
+                    <span>Discord</span>
+                    <span class="social-arrow">↗</span>
+                  </a>
+
+                  <!-- Steam -->
+                  <a href="https://steamcommunity.com/id/kintama404/" target="_blank" rel="noopener noreferrer" class="social-pill" aria-label="Steam Profile">
+                    <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
+                      <path d="M11.979 0C5.678 0 .511 4.86.022 11.037l6.432 2.658c.545-.371 1.203-.59 1.912-.59.063 0 .125.004.188.006l2.861-4.142V8.91c0-2.495 2.028-4.524 4.524-4.524 2.494 0 4.524 2.031 4.524 4.527s-2.03 4.525-4.524 4.525h-.105l-4.076 2.911c0 .052.005.105.005.159 0 1.875-1.515 3.396-3.39 3.396-1.635 0-3.016-1.173-3.331-2.727L.436 14.819C1.905 20.07 6.638 24 12.242 24c6.627 0 12-5.373 12-12s-5.373-12-12-12zm-4.707 18.064l-1.95-.806c.313.623.896 1.096 1.602 1.258.91.209 1.838-.137 2.373-.836l-.048-.035c-.628.026-1.391-.129-1.977-.581zm8.667-11.419c-1.257 0-2.278 1.021-2.278 2.277 0 1.257 1.021 2.279 2.278 2.279 1.255 0 2.277-1.022 2.277-2.279 0-1.256-1.022-2.277-2.277-2.277zm-8.814 8.799l-2.062-.852c-.045.24-.07.487-.07.74 0 .428.077.838.213 1.22l2.063.854c-.104-.377-.16-.777-.16-1.189 0-.265.028-.523.016-.773zm1.182.784c0 .991-.806 1.796-1.797 1.796-.134 0-.263-.016-.388-.046l1.642.679c.928.384 1.996-.067 2.38-1 .385-.93-.066-1.997-.996-2.382l-1.635-.676c.491.277.794.795.794 1.378l-.004.251z"/>
+                    </svg>
+                    <span>Steam</span>
+                    <span class="social-arrow">↗</span>
+                  </a>
+
+                  <!-- X / Twitter -->
+                  <a href="https://x.com/kintama404" target="_blank" rel="noopener noreferrer" class="social-pill" aria-label="X Profile">
+                    <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                    <span>X (Twitter)</span>
+                    <span class="social-arrow">↗</span>
+                  </a>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Working Contact Form Column -->
+          <div class="contact-form-col">
+            <div class="form-card">
+              <div class="form-card-header">
+                <div class="header-led"></div>
+                <span class="form-title-mono">TRANSMISSION CHANNEL // DIRECT</span>
+                <span class="form-encryption">TLS 1.3 ENCRYPTED</span>
+              </div>
+
+              <form id="contact-form" class="clean-form" action="https://formsubmit.co/mdraiyanislam944@proton.me" method="POST" novalidate>
+                <!-- FormSubmit Configuration -->
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_subject" value="Transmission from Kintama Portfolio">
+
+                <!-- Form Status Notification Message Box -->
+                <div id="form-alert" class="form-alert" role="alert" aria-live="polite" hidden></div>
+
+                <!-- Input Name -->
+                <div class="form-group">
+                  <label for="contact-name" class="form-label">
+                    <span class="label-code">01</span>
+                    <span class="label-text">YOUR NAME / ENTITY</span>
+                  </label>
+                  <div class="input-wrapper">
+                    <input 
+                      type="text" 
+                      id="contact-name" 
+                      name="name" 
+                      class="form-input" 
+                      placeholder="e.g. Alex Mercer" 
+                      required 
+                      autocomplete="name"
+                    >
+                    <span class="input-border-glow"></span>
+                  </div>
+                  <span class="field-error" id="name-error">Please provide your name or organization.</span>
+                </div>
+
+                <!-- Input Email -->
+                <div class="form-group">
+                  <label for="contact-email" class="form-label">
+                    <span class="label-code">02</span>
+                    <span class="label-text">RETURN DISPATCH EMAIL</span>
+                  </label>
+                  <div class="input-wrapper">
+                    <input 
+                      type="email" 
+                      id="contact-email" 
+                      name="email" 
+                      class="form-input" 
+                      placeholder="name@domain.com" 
+                      required 
+                      autocomplete="email"
+                    >
+                    <span class="input-border-glow"></span>
+                  </div>
+                  <span class="field-error" id="email-error">Please provide a valid email address for replies.</span>
+                </div>
+
+                <!-- Input Subject / Topic (User Freeform Input) -->
+                <div class="form-group">
+                  <label for="contact-subject" class="form-label">
+                    <span class="label-code">03</span>
+                    <span class="label-text">SUBJECT / INQUIRY SCOPE</span>
+                  </label>
+                  <div class="input-wrapper">
+                    <input 
+                      type="text" 
+                      id="contact-subject" 
+                      name="subject" 
+                      class="form-input" 
+                      placeholder="e.g. Open source collaboration, robotics, music gear..." 
+                      autocomplete="off"
+                    >
+                    <span class="input-border-glow"></span>
+                  </div>
+                </div>
+
+                <!-- Input Message -->
+                <div class="form-group">
+                  <label for="contact-message" class="form-label">
+                    <span class="label-code">04</span>
+                    <span class="label-text">TRANSMISSION PAYLOAD</span>
+                  </label>
+                  <div class="input-wrapper">
+                    <textarea 
+                      id="contact-message" 
+                      name="message" 
+                      rows="5" 
+                      class="form-textarea" 
+                      placeholder="Say hello, share a project idea, or discuss a collaboration..."
+                      required
+                    ></textarea>
+                    <span class="input-border-glow"></span>
+                  </div>
+                  <span class="field-error" id="message-error">Transmission payload cannot be empty.</span>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="form-actions">
+                  <button type="submit" id="submit-btn" class="submit-btn">
+                    <span class="btn-spinner" aria-hidden="true"></span>
+                    <svg class="btn-check" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M3.5 8.5l3 3 6-6"/>
+                    </svg>
+                    <span class="btn-text">Send Message</span>
+                    <svg class="btn-arrow" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M2 8h11M9 4l4 4-4 4"/>
+                    </svg>
+                  </button>
+                  <span class="form-note">Prompt reply within 24 hours.</span>
+                </div>
+              </form>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Site Footer (Pure Monochrome, Minimalist) -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <span class="footer-brand">::: KINTAMA</span>
+        <span class="footer-meta">Powered by Arch Linux and <a href="https://www.youtube.com/watch?v=fC7oUOUEEi4" target="_blank" rel="noopener noreferrer">questionable life choices</a>. Btw did I mention I use Arch Linux btw?</span>
+      </div>
+
+      <div class="footer-center">
+        <span class="footer-copy">© <a href="https://github.com/legendlife/legendlife.github.io/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">2026 Kintama.</a> All systems nominal.</span>
+      </div>
+
+      <div class="footer-right">
+        <a href="#hero" class="back-to-top" id="back-to-top" aria-label="Back to top">
+          <span>Top</span>
+          <svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M8 13V3M4 7l4-4 4 4"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script logic: Particles, 3D mouse parallax, clipboard copy, and form validation -->
+  <script src="js/script.js" defer></script>
+</body>
+</html>
